@@ -128,3 +128,12 @@ searchBtn.addEventListener('click', function () {
 sliderBtn.addEventListener('click', function () {
   createSlider()
 })
+
+
+//Enter Button Active
+document.getElementById("search")
+.addEventListener("keypress", function (event){
+  if(event.key === 'Enter'){
+    document.getElementById("search-btn").click();
+  }
+});
