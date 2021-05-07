@@ -4,7 +4,7 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
-// const noOfSelectedImages = document.getElementById('image-count');
+const controlBtn = document.getElementById('image-control-btn');
 // selected image 
 let sliders = [];
 
@@ -23,7 +23,7 @@ const showImages = (images) => {
   images.forEach(image => {
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+    div.innerHTML = `<div class="photo"> <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}"></div>`;
     gallery.appendChild(div);
   })
 
@@ -68,7 +68,7 @@ const createSlider = () => {
 
   sliderContainer.appendChild(prevNext);
   document.querySelector('.main').style.display = 'block';
-  // hide image aria
+  // hide image area
   imagesArea.style.display = 'none';
   let duration;
   const durationInput = document.getElementById('duration').value;
@@ -95,8 +95,9 @@ const createSlider = () => {
 }
 
 // change slider index 
+
 const changeItem = index => {
-  changeSlide(slideIndex += index);
+    changeSlide(slideIndex += index);
 }
 
 // change slide item
@@ -126,6 +127,7 @@ searchBtn.addEventListener('click', function () {
   const search = document.getElementById('search').value;
   getImages(search);
   sliders.length = 0;
+  document.getElementById('image-count').innerText ="";
 })
 
 sliderBtn.addEventListener('click', function () {
@@ -133,7 +135,7 @@ sliderBtn.addEventListener('click', function () {
 })
 
 
-//Enter Button Active
+//Task-4: Enter Button Active
 document.getElementById("search")
 .addEventListener("keypress", function (event){
   if(event.key === 'Enter'){
