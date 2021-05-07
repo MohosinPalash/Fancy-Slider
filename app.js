@@ -4,6 +4,7 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+// const noOfSelectedImages = document.getElementById('image-count');
 // selected image 
 let sliders = [];
 
@@ -47,6 +48,7 @@ const selectItem = (event, img) => {
     element.classList.remove('added');
     sliders.splice(item, 1);
   }
+  document.getElementById('image-count').innerText = " ("+sliders.length+")";
 }
 var timer;
 const createSlider = () => {
